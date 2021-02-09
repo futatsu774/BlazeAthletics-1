@@ -1,0 +1,31 @@
+
+ .container {
+     margin-left: 5%;
+     margin-top: 5%;
+ }
+ 
+ .btn-login  {
+     margin-top: 5%;
+     width: 110px;
+     margin-right: 20px;
+ }
+
+ input.ng-invalid.ng-touched
+ {
+    border: 1px solid red;
+ }
+
+  label {
+    display: inline-block;
+    margin-bottom: 0rem; 
+    margin-top: 1rem;
+}
+form {
+    margin-bottom: 1em;
+}
+
+ 
+ .img-fluid {
+    max-width: 85%;
+    height: auto;
+}

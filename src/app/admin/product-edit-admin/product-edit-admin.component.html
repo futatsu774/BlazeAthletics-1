@@ -1,0 +1,85 @@
+<div class="container-fluid">
+<h2>EDIT PRODUCT</h2>
+  <h5>DYNAMITE HOODIE</h5>
+  <form action="/action_page.php" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+   <div class="row">
+      <div class="col-sm-3">
+          <div class="row card">
+              <div class="card-body">
+                <h4>BASIC INFORMATION</h4>
+                <div class="form-group" >
+                    <label for="pname" >Product Name:</label>
+                    <input type="text" class="form-control" id="pname" placeholder="" value="Dynamite Hoodie">
+                </div>
+                <div class="form-group" >
+                    <label for="desc" >Description:</label>
+                    <textarea class="form-control rounded-0" rows="3" id="desc"> </textarea> 
+                </div>
+                <div class="form-group" >
+                        <label for="desc" >Category:</label>
+                        <input type="text" class="form-control" placeholder="">
+                </div>                  
+              </div>
+        </div> 
+    </div>
+
+
+      <div class="col-sm-6">
+          <div class="row card">
+              <div class="card-body">
+                <h4>SALES INFORMATION</h4>
+                <div class="row">
+                    <label for="name" class="col-sm-3">Color:</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="name" name="name" formControlName="name" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                    <button (click)="addQuantity()" class="btn btn-black">Add</button>
+                    </div>            
+                </div>
+<div  *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+    <app-product-dynamic-inputs></app-product-dynamic-inputs>
+</div> 
+   
+
+
+                </div>
+            </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="row card">
+            <div class="card-body">
+                <h4>MEDIA MANAGEMENT</h4>      
+            <div class="form-group col-sm-12 " >
+                <label> Images</label>
+            </div>
+            <div class="col-sm-12">
+                <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>  
+            </div>  
+          </div>
+</div>
+        </div>
+            <div class="col-sm-12 btn">
+          <input type="submit" class="btn btn-black" value="SAVE CHANGES">
+        </div>
+     </div>   
+</form>
+</div>
+
+<div class="container">
+  
+    <form >
+      
+
+      
+    </form>
+      
+  
+  </div>

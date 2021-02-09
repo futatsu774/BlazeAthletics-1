@@ -1,0 +1,47 @@
+
+.row{
+    background-color: #DCDCDC;
+    margin-top: 1em;
+    padding: 2.5em;
+}
+.item-choices {
+margin-bottom: 5em;
+}
+
+.btn-cart {
+	float: right;
+	border-color: #999;
+  background-color: #999;
+  color: white;
+}
+
+#quantity {
+	width: 20%;
+}
+
+.container {
+float: left;
+   width: auto;
+   margin-left: 1em;
+}
+
+h1 { 
+  color:green; 
+} 
+.xyz { 
+  background-size: auto; 
+  text-align: center; 
+  padding-top: 100px; 
+} 
+.btn-circle.btn-xl { 
+  width: 70px; 
+  height: 70px; 
+  padding: 10px 16px; 
+  border-radius: 35px; 
+  font-size: 12px; 
+  text-align: center; 
+  margin-right: 0.7em;
+  margin-bottom: 1em;
+  font-family: LemonMilk;
+  font-size: 1.5em;
+} 

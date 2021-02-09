@@ -1,0 +1,13 @@
+<div class="container">
+  <carousel [noWrap]="noWrapSlides" [showIndicators]="showIndicator">
+     <slide *ngFor="let slide of slides; let index=index">
+        <img [src]="slide.image" class = "img-responsive"  alt="image slide" style="display: block; width: 100%;">
+     </slide>
+  </carousel>
+  <br/>
+</div>
+
+<div class="container-fluid text-center"> 
+  <h2 class="home-header">NEW RELEASES</h2><br>
+    <app-product></app-product>   
+</div>

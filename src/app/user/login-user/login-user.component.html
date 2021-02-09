@@ -1,0 +1,41 @@
+<div class="row container">  
+  <div class="col-sm-6 ">	
+
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{error}}</p>
+    </div>
+
+     <form class = "form-horizontal"
+     [formGroup]="signUpForm"
+     (ngSubmit)="onSubmit()">
+
+            <label for="email">Email:</label>
+
+            <input type="text" 
+            class="form-control" 
+            id="email" 
+            formControlName="email"
+            placeholder="Enter Your Email">
+
+            <label for="password">Password:</label>
+
+            <input type="password" 
+            class="form-control" 
+            id="password"
+            formControlName="password" 
+            placeholder="Enter Your Password">
+
+            <button type="submit" class="btn  btn-login btn-black" [disabled]="!signUpForm.valid">LOG IN</button>
+            <button type="button" class="btn  btn-login btn-white">CANCEL</button>
+
+      </form>
+
+      <a routerLink="/signup-user" class="txtblack"> Don't have an account yet? Sign up instead</a>
+
+  </div>
+
+  <div class="col-sm-6"> 
+    <img  class="img-fluid"  alt="Responsive Image" height="40" src="../../assets/images/sample.jpg">
+  </div>
+
+</div>

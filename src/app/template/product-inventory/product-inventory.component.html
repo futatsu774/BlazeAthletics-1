@@ -1,0 +1,31 @@
+<div class="row margin" >
+    <div class="col-sm-4" *ngFor='let product of product'>
+        <div class="card">
+        <img [src]="product.img" class="img-responsive card-img-top" style="width:100%" alt="Image">
+        <div class="row card-body margin">
+             <div class="col-sm-12"> 
+                <div class="col-sm-12">
+                    <p class="prName"> {{product.name}} </p>
+                </div>
+                <div class="col-sm-6">       	
+                    <p class="prPrice"> P950</p>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="prDet"> Stocks: 45</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="prDet"> Sold: 35</p>  
+                        </div>
+                    </div>
+
+                </div>		        		
+            </div>
+            <div class="col-sm-12 margin">
+                <button routerLink = "/product-edit"class="btn btn-black btn-block">Edit</button>
+            </div> 
+        </div>            
+        </div>
+    </div>
+</div>
