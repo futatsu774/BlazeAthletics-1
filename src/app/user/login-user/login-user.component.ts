@@ -23,6 +23,11 @@ export class LoginUserComponent implements OnInit {
     });
   }
 
+  onCancel()
+  {
+    this.loginForm.reset();
+  }
+
   onSubmit(){
     if(!this.loginForm.valid){return;}
 

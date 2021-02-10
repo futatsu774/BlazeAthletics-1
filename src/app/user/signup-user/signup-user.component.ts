@@ -51,6 +51,11 @@ export class SignupUserComponent implements OnInit, OnDestroy {
     this.authSub.unsubscribe();
   }
 
+  onCancel()
+  {
+    this.signUpForm.reset();
+  }
+
   matchingPassword(formGroup: FormGroup): {[s: string] : boolean}
   {
   const password = formGroup.get('password').value;
