@@ -32,7 +32,7 @@ export class SignupUserComponent implements OnInit, OnDestroy {
       "passwordField" : new FormGroup({
           "password": new FormControl(null, [Validators.required, Validators.minLength(6)]),
           "confirmPassword": new FormControl(null, [Validators.required, Validators.minLength(6)])
-        },{validators: this.matchingPassword}),
+        },{validators: this.matchingPassword})
       }
     );
   }
@@ -48,7 +48,10 @@ export class SignupUserComponent implements OnInit, OnDestroy {
 
   ngOnDestroy()
   {
-    this.authSub.unsubscribe();
+    if(this.authSub)
+    {
+      this.authSub.unsubscribe(); 
+    }
   }
 
   onCancel()
