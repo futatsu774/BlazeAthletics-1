@@ -1,18 +1,22 @@
 <h2> MEMBER INFORMATION</h2>
 
 <div class="row signup-container">
-
-	<div class="col-sm-8 form-horizontal">	
-	<form action="/action_page.php">	
+	<div class="col-sm-8 form-horizontal">
+		
+		<div class="alert alert-danger" *ngIf="errorMessage">
+			<p>{{errorMessage}}</p>
+		  </div>
+		
+	<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">	
 
 		<div class="form-group row">
 			<label for="fname" class="control-label col-sm-6">Fist Name:</label>
 			<label for="mname" class="control-label col-sm-6">Middle Name:</label>
 			<div class="col-sm-6">
-				<input type="password" class="form-control" id="pwd" placeholder="First Name">
+				<input type="text" class="form-control" id="pwd" placeholder="First Name" formControlName="firstName">
 	  		</div>
 	   		<div class="col-sm-6">
-				<input type="text" class="form-control" id="mname" placeholder="Middle Name">
+				<input type="text" class="form-control" id="mname" placeholder="Middle Name" formControlName="middleName" >
 	  		 </div> 			 
 		</div>
 
@@ -21,7 +25,7 @@
 			<label for="lname" class="control-label col-sm-6">Last Name:</label>
 			<label for="suffix" class="control-label col-sm-6">Suffix (if applicable)</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="lname" placeholder="Last Name">
+				<input type="text" class="form-control" id="lname" placeholder="Last Name" formControlName="lastName">
 			</div>
 			   <div class="col-sm-6">
 				<input type="text" class="form-control" id="suffix" placeholder="Suffix">
@@ -31,17 +35,17 @@
 		<div class="form-group row">
 	    	<label for="adrs1" class="control-label col-sm-12">Address Line </label>
 			<div class="col-sm-12">
-				<input type="text" class="form-control" id="adrs1" placeholder="Building Number, Street">
+				<input type="text" class="form-control" id="adrs1" placeholder="Building Number, Street" formControlName="address">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="brgy" class="control-label col-sm-6">Barangay:</label>
 			<label for="city" class="control-label col-sm-6">City:</label>
 				<div class="col-sm-6">
-				<input type="text" class="form-control" id="brgy" placeholder="Barangay">
+				<input type="text" class="form-control" id="brgy" placeholder="Barangay" formControlName="barangay">
 			</div>
 			   <div class="col-sm-6">
-				<input type="text" class="form-control" id="city" placeholder="City">
+				<input type="text" class="form-control" id="city" placeholder="City" formControlName="city">
 			</div> 
 		</div>
 
@@ -49,27 +53,40 @@
 			<label for="prov" class="control-label col-sm-6">Region/Province:</label>
 			<label for="pcode" class="control-label col-sm-6">Postal Code</label>	
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="prov" placeholder="Region/Province">
+				<input type="text" class="form-control" id="prov" placeholder="Region/Province" formControlName="region">
 			</div>
 			   <div class="col-sm-6">
-				<input type="text" class="form-control" id="pcode" placeholder="Postal Code">
+				<input type="text" class="form-control" id="pcode" placeholder="Postal Code" formControlName="postalCode">
 			</div> 
 		</div>
 		<div class="form-group row">
 		    <label for="email" class="control-label col-sm-12">Email Address:</label>
 			<div class="col-sm-12">
-				<input type="password" class="form-control" id="email" placeholder="Email Address">
+				<input type="text" 
+				class="form-control"
+				formControlName="email" 
+				id="email" 
+				placeholder="Email Address">
 			</div>
 		</div>
 
+		<div formGroupName="passwordField">
 		<div class="form-group row">
 			<label for="crtpasswd" class="control-label col-sm-6">Create a Password:</label>
 			<label for="confpasswd" class="control-label col-sm-6">Confirm Password:</label>
 			<div class="col-sm-6">
-				<input type="password" class="form-control" id="crtpasswd" placeholder="Password">
+				<input type="password" 
+				class="form-control" 
+				id="crtpasswd" 
+				formControlName="password"
+				placeholder="Password">
 			</div>
 			   <div class="col-sm-6">
-				<input type="password" class="form-control" id="confpasswd" placeholder="Password">
+				<input type="password"
+				class="form-control" 
+				id="confpasswd" 
+				formControlName="confirmPassword"
+				placeholder="Password">
 			</div> 
 		</div>
 		<div class="form-group row">
@@ -77,15 +94,17 @@
 				<a routerLink="/login-user" class="txtblack txtblack"> Already have an account? Log in instead.</a>
 			</div>
 			<div class="col-sm-2">
-							<button type="submit" class="btn btn-default btn-black">Sign Up</button>
+							<button type="submit" class="btn btn-default btn-black" [disabled]="!signUpForm.valid">Sign Up</button>
 
 			</div>
 			   <div class="col-sm-2">	  	
-				   	<button type="submit" class="btn btn-white ">Cancel</button>
+				   	<button type="button" class="btn btn-white ">Cancel</button>
 
 			</div> 
 
 		</div>
+
+	</div>
 
 	</form>
 </div>

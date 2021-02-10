@@ -6,7 +6,7 @@
     </div>
 
      <form class = "form-horizontal"
-     [formGroup]="signUpForm"
+     [formGroup]="loginForm"
      (ngSubmit)="onSubmit()">
 
             <label for="email">Email:</label>
@@ -25,7 +25,7 @@
             formControlName="password" 
             placeholder="Enter Your Password">
 
-            <button type="submit" class="btn  btn-login btn-black" [disabled]="!signUpForm.valid">LOG IN</button>
+            <button type="submit" class="btn  btn-login btn-black" [disabled]="!loginForm.valid">LOG IN</button>
             <button type="button" class="btn  btn-login btn-white">CANCEL</button>
 
       </form>

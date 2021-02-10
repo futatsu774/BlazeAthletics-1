@@ -47,7 +47,8 @@ export class AuthenticationService
         }).pipe(
             catchError(this.handleError), 
             tap(resData => {
-            this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);    
+            this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
+            this.router.navigate(['/my-account']);    
         }));
     }
 
@@ -184,6 +185,7 @@ export class AuthenticationService
         //if there is no error code, throw the default error message
         if(!errorRes.error || !errorRes.error.error)
         {
+            console.log(errorMessage);
             return throwError(errorMessage);
         }
 

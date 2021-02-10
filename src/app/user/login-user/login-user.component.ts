@@ -10,24 +10,24 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class LoginUserComponent implements OnInit {
 
-  signUpForm: FormGroup;
+  loginForm: FormGroup;
   error: string = null;
 
   constructor(private authService: AuthenticationService,
     private router: Router){}
 
   ngOnInit(){
-    this.signUpForm = new FormGroup({
+    this.loginForm = new FormGroup({
       'email': new FormControl(null,[Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
 
   onSubmit(){
-    if(!this.signUpForm.valid){return;}
+    if(!this.loginForm.valid){return;}
 
-    const email = this.signUpForm.value.email;
-    const password = this.signUpForm.value.password;
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
 
     this.authService.login(email, password).subscribe(responseData => {
         this.router.navigate(['/my-account'])
