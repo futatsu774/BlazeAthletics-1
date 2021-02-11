@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminWriteData } from 'src/app/service/admin-write-data.service';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class LoginUserComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm: FormGroup; 
   error: string = null;
 
   constructor(private authService: AuthenticationService,
@@ -35,7 +36,7 @@ export class LoginUserComponent implements OnInit {
     const password = this.loginForm.value.password;
 
     this.authService.login(email, password).subscribe(responseData => {
-        this.router.navigate(['/my-account'])
+        this.router.navigate(['/my-account']);
       }, errorMessage =>{
         this.error = errorMessage;
       } 

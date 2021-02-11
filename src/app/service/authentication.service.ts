@@ -21,6 +21,7 @@ export interface AuthResponseData
 export class AuthenticationService
 {
     user = new BehaviorSubject<UserModel>(null);
+    isAdmin:boolean = false;
     public userToken:string = null;
     private tokenExpirationTimer: any;
 
@@ -92,6 +93,8 @@ export class AuthenticationService
           //converts the string data into JSON
       } = JSON.parse(localStorage.getItem('userData'));
 
+      const adminConfirm = JSON.parse(localStorage.getItem('adminData'));
+
       //if there is no user data, return nothing.
         if(!userData)
         {
@@ -108,6 +111,7 @@ export class AuthenticationService
 
         if(loadedUser.token)
         {
+            this.isAdmin = adminConfirm;
             this.user.next(loadedUser);
             const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
             this.autoLogout(expirationDuration);
@@ -125,8 +129,10 @@ export class AuthenticationService
          */
 
         this.user.next(null);
+        this.isAdmin = false;
         this.router.navigate(['/login-user']);
         localStorage.removeItem('userData');
+        localStorage.removeItem('adminData')
         if(this.tokenExpirationTimer)
         {
             clearTimeout(this.tokenExpirationTimer);
@@ -168,7 +174,7 @@ export class AuthenticationService
         localStorage.setItem('userData', JSON.stringify(user));
     }
 
-    private handleError(errorRes: HttpErrorResponse)
+    handleError(errorRes: HttpErrorResponse)
     {
 
         /**
@@ -190,11 +196,11 @@ export class AuthenticationService
         switch(errorRes.error.error.message)
         {
           case 'EMAIL_EXISTS':
-            errorMessage = 'this Email Exists Already';
+            errorMessage = 'This email already exists!';
             break;
           case 'INVALID_PASSWORD':  
           case 'EMAIL_NOT_FOUND':
-            errorMessage = 'Email or password was not found';
+            errorMessage = 'Email or password was not correct';
             break;
           default:
               errorMessage = 'An Error Occurred';    

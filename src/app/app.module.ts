@@ -1,6 +1,6 @@
 import { ProductsService } from './service/products.service';
 import { OrderOngoingComponent } from './admin/order-ongoing/order-ongoing.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
@@ -55,6 +55,7 @@ import { ProductDynamicInputsComponent } from './template/product-dynamic-inputs
 import { AuthenticationInterceptorService } from './service/authentication.interceptor.service';
 import { UserAuthenticationGuard } from './route-guard/user.authentication.guard';
 import { SignInGuard } from './route-guard/sign-in.guard';
+import { AdminGuard } from './route-guard/admin.guard';
 
 @NgModule({
   declarations: [
@@ -120,19 +121,19 @@ import { SignInGuard } from './route-guard/sign-in.guard';
       {path: 'my-account', component: MyAccountUserComponent, canActivate:[UserAuthenticationGuard]},
       {path: 'selected-item', component:SelectedItemUserComponent},
       {path: 'login-admin', component: LoginAdminComponent},
-      {path: 'dashboard-admin', component: DashboardAdminComponent},
-      {path: 'inventory', component:InventoryAdminComponent},
-      {path: 'product-edit', component: ProductEditAdminComponent},
-      {path: 'product-new', component: ProductNewAdminComponent},
-      {path: 'accounts-registered', component: AccountsRegisteredAdminComponent},
-      {path: 'account-new', component: AccountsNewAdminComponent},
-      {path: 'account-edit', component: AccountEditAdminComponent},
-      {path: 'orders-topay', component: OrderTopayComponent},
-      {path: 'orders-pending', component: OrderPendingComponent},
-      {path: 'orders-delivery', component: OrderDeliveryComponent},
-      {path: 'orders-ongoing', component: OrderOngoingComponent},
-      {path:'orders-cancel', component:OrderCancelComponent},
-      {path:'orders-history', component: OrderHistoryComponent},
+      {path: 'dashboard-admin', component: DashboardAdminComponent, canActivate:[AdminGuard]},
+      {path: 'inventory', component:InventoryAdminComponent, canActivate:[AdminGuard]},
+      {path: 'product-edit', component: ProductEditAdminComponent, canActivate:[AdminGuard]},
+      {path: 'product-new', component: ProductNewAdminComponent, canActivate:[AdminGuard]},
+      {path: 'accounts-registered', component: AccountsRegisteredAdminComponent, canActivate:[AdminGuard]},
+      {path: 'account-new', component: AccountsNewAdminComponent, canActivate:[AdminGuard]},
+      {path: 'account-edit', component: AccountEditAdminComponent, canActivate:[AdminGuard]},
+      {path: 'orders-topay', component: OrderTopayComponent, canActivate:[AdminGuard]},
+      {path: 'orders-pending', component: OrderPendingComponent, canActivate:[AdminGuard]},
+      {path: 'orders-delivery', component: OrderDeliveryComponent, canActivate:[AdminGuard]},
+      {path: 'orders-ongoing', component: OrderOngoingComponent, canActivate:[AdminGuard]},
+      {path:'orders-cancel', component:OrderCancelComponent, canActivate:[AdminGuard]},
+      {path:'orders-history', component: OrderHistoryComponent, canActivate:[AdminGuard]},
     ]),
       
   ],

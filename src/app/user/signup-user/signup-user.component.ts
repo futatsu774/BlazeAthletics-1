@@ -48,7 +48,7 @@ export class SignupUserComponent implements OnInit, OnDestroy {
       }
     );
   }
-
+  
   ngOnDestroy()
   {
     if(this.authSub)

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class MyAccountUserComponent{
   title = 'appBootstrap';
   
   public isCollapsed = false;
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   onLogOut()
   {
